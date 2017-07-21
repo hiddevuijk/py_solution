@@ -11,7 +11,6 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <random>
 
 
 double distance_3d(const std::vector<double>& a,
@@ -160,22 +159,6 @@ void write_mat(const std::vector<std::vector<double> >& m,int nv,
 			if(nelemi + 1 < nelem) out << sep2;
 		}
 		out << sep1;
-	}
-}
-
-
-
-void rand_vecs(std::vector<std::vector<double> >& r,
-	int N, int dim, double min, double max,
-	std::default_random_engine& gen, double norm = -1.)
-{
-	std::uniform_real_distribution<double> dist(min,max);
-	for(int i=0;i<N;++i) {
-		for(int d=0;d<dim;++d) {
-			r[i][d] = dist(gen);
-		}
-		if(norm > 0.)
-			normalize(r[i],norm);
 	}
 }
 
